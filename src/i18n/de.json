@@ -1,0 +1,29 @@
+{
+  "title": "Hotodog-Geist",
+  "press_start": "ENTER drücken zum Starten",
+  "player1": "Spieler 1",
+  "player2": "Spieler 2",
+  "lives": "Leben",
+  "level": "Level",
+  "ghosts_remaining": "Geister: {{count}}",
+  "game_over": "Spiel vorbei",
+  "level_complete": "Level geschafft!",
+  "arrest": "Verhaftet!",
+  "parrot_delivery": "Sonderlieferung!",
+  "levels": {
+    "CityStreets": "Stadtstraßen",
+    "PoliceCastle": "Polizeischloss",
+    "GhostCastle": "Geisterschloss",
+    "Train": "Der Zug",
+    "PoliceShip": "Polizeischiff",
+    "CarRoad": "Autobahnpolizei"
+  },
+  "parrot_items": {
+    "parrot_hat": "Ein riesiger Hut!",
+    "parrot_coat": "Ein gewaltiger Mantel!",
+    "parrot_gloves": "Sehr große Handschuhe!",
+    "parrot_boots": "Riesige Stiefel!",
+    "parrot_badge": "Ein kolossales Abzeichen!",
+    "parrot_scarf": "Ein wahrhaft riesiger Schal!"
+  }
+}

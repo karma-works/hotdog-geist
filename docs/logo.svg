@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 160" width="400" height="160">
+  <!-- Background -->
+  <rect width="400" height="160" rx="12" fill="#0d0d1a"/>
+
+  <!-- Ghost body -->
+  <ellipse cx="52" cy="62" rx="28" ry="32" fill="#c8d8ff"/>
+  <rect x="24" y="62" width="56" height="30" fill="#c8d8ff"/>
+  <!-- Ghost wavy bottom -->
+  <path d="M24 92 Q31 104 38 92 Q45 80 52 92 Q59 104 66 92 Q73 80 80 92 L80 100 L24 100 Z" fill="#c8d8ff"/>
+  <!-- Ghost eyes -->
+  <ellipse cx="43" cy="58" rx="5" ry="6" fill="#1a1a2e"/>
+  <ellipse cx="61" cy="58" rx="5" ry="6" fill="#1a1a2e"/>
+  <!-- Ghost shine -->
+  <circle cx="46" cy="55" r="2" fill="white" opacity="0.7"/>
+  <circle cx="64" cy="55" r="2" fill="white" opacity="0.7"/>
+  <!-- Ghost smile -->
+  <path d="M44 70 Q52 76 60 70" stroke="#1a1a2e" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+  <!-- Police cap on ghost -->
+  <rect x="30" y="28" width="44" height="8" rx="2" fill="#1a3a6e"/>
+  <rect x="26" y="34" width="52" height="5" rx="1" fill="#1a3a6e"/>
+  <!-- Cap badge -->
+  <polygon points="52,22 55,30 62,30 57,35 59,43 52,38 45,43 47,35 42,30 49,30" fill="#f0c040" transform="scale(0.5) translate(52,14)"/>
+
+  <!-- Hotdog bun -->
+  <ellipse cx="52" cy="118" rx="24" ry="10" fill="#d4956a"/>
+  <rect x="28" y="108" width="48" height="10" fill="#d4956a"/>
+  <!-- Sausage -->
+  <ellipse cx="52" cy="113" rx="18" ry="6" fill="#8b3a1a"/>
+  <!-- Mustard squiggle -->
+  <path d="M36 111 Q40 108 44 111 Q48 114 52 111 Q56 108 60 111 Q64 114 68 111" stroke="#f0c040" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Title text -->
+  <text x="108" y="72" font-family="'Courier New', monospace" font-size="36" font-weight="bold" fill="#c8d8ff" letter-spacing="1">HOTODOG</text>
+  <text x="108" y="112" font-family="'Courier New', monospace" font-size="36" font-weight="bold" fill="#f0c040" letter-spacing="2">GEIST</text>
+
+  <!-- Subtitle -->
+  <text x="108" y="135" font-family="'Courier New', monospace" font-size="13" fill="#6677aa" letter-spacing="3">BROWSER GAME</text>
+
+  <!-- Stars decoration -->
+  <text x="356" y="50" font-size="14" fill="#f0c040">★</text>
+  <text x="372" y="68" font-size="10" fill="#f0c040">★</text>
+  <text x="348" y="72" font-size="8" fill="#f0c040">★</text>
+</svg>
