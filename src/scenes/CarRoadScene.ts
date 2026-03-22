@@ -34,12 +34,8 @@ export class CarRoadScene extends Phaser.Scene {
   constructor() { super('CarRoadScene'); }
 
   create() {
-    this.bgScroll = this.add.tileSprite(GAME_WIDTH / 2, GAME_HEIGHT / 2, GAME_WIDTH, GAME_HEIGHT, 'bg_city');
-
-    // Lane dividers
-    [240, 480, 720].forEach(x =>
-      this.add.rectangle(x, GAME_HEIGHT / 2, 4, GAME_HEIGHT, 0xffffff, 0.3),
-    );
+    this.bgScroll = this.add.tileSprite(GAME_WIDTH / 2, GAME_HEIGHT / 2, GAME_WIDTH, GAME_HEIGHT, 'bg_road');
+    // Lane dividers are baked into bg_road — no separate rectangles needed
 
     // Police car: invisible box (position anchor) + SVG image on top
     this.policeBox = this.add.rectangle(GAME_WIDTH / 2, GAME_HEIGHT - 60, 28, 44, 0x3388ff, 0);
