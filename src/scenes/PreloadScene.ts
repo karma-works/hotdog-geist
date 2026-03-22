@@ -23,6 +23,10 @@ export class PreloadScene extends Phaser.Scene {
     this.load.svg('ground',    SP + 'ground.svg',    { width: 32, height: 32 });
     this.load.svg('platform',  SP + 'platform.svg',  { width: 32, height: 16 });
 
+    // Cars
+    this.load.svg('car_police',  SP + 'car_police.svg',  { width: 28, height: 44 });
+    this.load.svg('car_traffic', SP + 'car_traffic.svg', { width: 24, height: 40 });
+
     // Backgrounds at full game resolution
     this.load.svg('bg_city',   SP + 'bg_city.svg',   { width: 960, height: 540 });
     this.load.svg('bg_castle', SP + 'bg_castle.svg', { width: 960, height: 540 });

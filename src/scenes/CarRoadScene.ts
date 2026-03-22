@@ -4,14 +4,20 @@ import { gameState } from '../systems/GameState';
 
 const OVERLAY_DEPTH = 200;
 
-interface Car { sprite: Phaser.GameObjects.Rectangle; speed: number; ticketed: boolean; }
+interface Car {
+  box:      Phaser.GameObjects.Rectangle;
+  img:      Phaser.GameObjects.Image;
+  speed:    number;
+  ticketed: boolean;
+}
 
 const SPEED_LIMIT  = 120;
 const TICKET_RANGE = 80;
 
 export class CarRoadScene extends Phaser.Scene {
   private cars: Car[] = [];
-  private policeCar!: Phaser.GameObjects.Rectangle;
+  private policeBox!: Phaser.GameObjects.Rectangle;
+  private policeImg!: Phaser.GameObjects.Image;
   private policeX = GAME_WIDTH / 2;
   private ticketsIssued = 0;
   private escaped = 0;
@@ -35,8 +41,9 @@ export class CarRoadScene extends Phaser.Scene {
       this.add.rectangle(x, GAME_HEIGHT / 2, 4, GAME_HEIGHT, 0xffffff, 0.3),
     );
 
-    this.policeCar = this.add.rectangle(GAME_WIDTH / 2, GAME_HEIGHT - 60, 28, 44, 0x3388ff);
-    this.add.text(GAME_WIDTH / 2, GAME_HEIGHT - 60, '🚓', { fontSize: '24px' }).setOrigin(0.5);
+    // Police car: invisible box (position anchor) + SVG image on top
+    this.policeBox = this.add.rectangle(GAME_WIDTH / 2, GAME_HEIGHT - 60, 28, 44, 0x3388ff, 0);
+    this.policeImg = this.add.image(GAME_WIDTH / 2, GAME_HEIGHT - 60, 'car_police');
 
     this.statusText = this.add.text(16, 16, '', {
       fontFamily: 'monospace', fontSize: '18px',
@@ -60,8 +67,10 @@ export class CarRoadScene extends Phaser.Scene {
     this.spawned++;
     const lane  = Phaser.Utils.Array.GetRandom(this.LANES) as number;
     const speed = Phaser.Math.Between(80, 240);
-    const sprite = this.add.rectangle(lane, -40, 24, 40, speed > SPEED_LIMIT ? 0xff4444 : 0xcccccc);
-    this.cars.push({ sprite, speed, ticketed: false });
+    const color = speed > SPEED_LIMIT ? 0xff4444 : 0x44cc44;
+    const box = this.add.rectangle(lane, -40, 24, 40, color);
+    const img = this.add.image(lane, -40, 'car_traffic');
+    this.cars.push({ box, img, speed, ticketed: false });
   }
 
   update(_time: number, delta: number) {
@@ -72,26 +81,29 @@ export class CarRoadScene extends Phaser.Scene {
     const moveRight = this.cursors.right!.isDown || this.wasd.right.isDown;
     if (moveLeft)  this.policeX = Math.max(16, this.policeX - 240 * dt);
     if (moveRight) this.policeX = Math.min(GAME_WIDTH - 16, this.policeX + 240 * dt);
-    this.policeCar.x = this.policeX;
+    this.policeBox.x = this.policeX;
+    this.policeImg.x = this.policeX;
 
     for (let i = this.cars.length - 1; i >= 0; i--) {
       const car = this.cars[i];
-      car.sprite.y += car.speed * dt;
+      car.box.y += car.speed * dt;
+      car.img.y  = car.box.y;
 
       if (
         !car.ticketed && car.speed > SPEED_LIMIT &&
-        Math.abs(car.sprite.x - this.policeX) < TICKET_RANGE &&
-        Math.abs(car.sprite.y - this.policeCar.y) < TICKET_RANGE
+        Math.abs(car.box.x - this.policeX) < TICKET_RANGE &&
+        Math.abs(car.box.y - this.policeBox.y) < TICKET_RANGE
       ) {
         car.ticketed = true;
-        car.sprite.setFillStyle(0xffdd44);
+        car.box.setFillStyle(0xffdd44);
         this.ticketsIssued++;
-        this.showTicket(car.sprite.x, car.sprite.y);
+        this.showTicket(car.box.x, car.box.y);
       }
 
-      if (car.sprite.y > GAME_HEIGHT + 60) {
+      if (car.box.y > GAME_HEIGHT + 60) {
         if (!car.ticketed && car.speed > SPEED_LIMIT) this.escaped++;
-        car.sprite.destroy();
+        car.box.destroy();
+        car.img.destroy();
         this.cars.splice(i, 1);
       }
     }
