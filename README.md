@@ -5,7 +5,7 @@
 **Hotodog-Geist** is a co-op browser game for kids (ages 6+) built with Phaser 3, TypeScript and Vite.
 Two police officers team up to stun and arrest ghosts and monsters across six levels — from city streets and spooky castles to a speeding train and a police ship at sea.
 
-🎮 **[Play the live demo](https://karma-works.github.io/hotodog-geist/)**
+🎮 **[Play the live demo](https://karma-works.github.io/hotdog-geist/)**
 
 ---
 
