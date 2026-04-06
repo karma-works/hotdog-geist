@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/hotodog-geist/',
+  base: '/hotdog-geist/',
   build: {
     outDir: 'dist',
     target: 'es2022',
